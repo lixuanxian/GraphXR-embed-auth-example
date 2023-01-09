@@ -1,11 +1,11 @@
-var express = require('express');
-var app = express();
-var path = require("path")
-var passport = require('passport')
-var session = require('express-session')
-var env = require('dotenv').config();
-var models = require("./app/models");
-var exphbs = require('express-handlebars')
+let express = require('express');
+let app = express();
+let path = require("path")
+let passport = require('passport')
+let session = require('express-session')
+let env = require('dotenv').config();
+let models = require("./app/models");
+let exphbs = require('express-handlebars')
 app.use(express.urlencoded({
     extended: true
 })
@@ -26,7 +26,7 @@ app.use(passport.session()); // persistent login sessions
 app.use(express.static(path.join(__dirname, '/app/public')));
 
 app.get('/', function (req, res) {
-    res.send('Welcome to Passport with Sequelize');
+    res.redirect("/dashboard");
 });
 
 //For Handlebars
@@ -49,10 +49,12 @@ models.sequelize.sync()
 });
 
 //Routes
-var authRoute = require('./app/routes/auth.js')(app,passport);
+let authRoute = require('./app/routes/auth.js')(app,passport);
 
 app.listen(5000, function (err) {
-    if (!err)
-        console.log("Site is live");
-    else console.log(err)
+    if (!err){
+        console.log("Site is live http://localhost:5000");
+    }else{
+         console.log(err);
+    }
 });

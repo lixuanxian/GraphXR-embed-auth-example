@@ -1,6 +1,6 @@
 module.exports = function (sequelize, Sequelize) {
 
-    var User = sequelize.define('user', {
+    let User = sequelize.define('user', {
 
         id: {
             autoIncrement: true,
@@ -8,12 +8,12 @@ module.exports = function (sequelize, Sequelize) {
             type: Sequelize.INTEGER
         },
 
-        firstname: {
+        firstName: {
             type: Sequelize.STRING,
             notEmpty: true
         },
 
-        lastname: {
+        lastName: {
             type: Sequelize.STRING,
             notEmpty: true
         },
@@ -36,6 +36,11 @@ module.exports = function (sequelize, Sequelize) {
         password: {
             type: Sequelize.STRING,
             allowNull: false
+        },
+
+        oAuthToken:{
+            type: Sequelize.STRING,
+            allowNull: true
         },
 
         last_login: {
