@@ -12,8 +12,7 @@ bash ./run.sh
 
 <http://localhost:8080/admin/master/console/#/master/users>
 
-graphxr@kineviz.com zaq1xsw2  
-sean@kineviz.com zaq1xsw2  
+demo@kineviz.com YourPassword  
 
 #### 1.1.1 Create User
 ![image](./images/create-client.png)
