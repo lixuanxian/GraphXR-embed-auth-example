@@ -1,7 +1,7 @@
 {
-  "name": "passport-sequelize",
+  "name": "graphxr-iframe-auth-example",
   "version": "1.0.0",
-  "description": "Using Passport with Sequelize and MySQL",
+  "description": "GraphXR iframe oAuth example",
   "main": "server.js",
   "scripts": {
     "start": "nodemon ./server.js --watch ./server.js --watch ./app ",

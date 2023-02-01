@@ -99,10 +99,10 @@ Add the follow iframeAuth info to graphXR config.js
 
 The GraphXR（http://localhost:9000） iframe embed example link
 
-> The email and token are requirements
+> The token is requirement, the email is optional if the API(userProfileURL) can response the email info.
 
 ```
 
-<iframe src="http://localhost:9000/projects?token={{OpenID_AccessToken}}&email={{email}}" width="100%" height="500px"></iframe>
+<iframe src="http://localhost:9000/projects?token={{OpenID_AccessToken}}" width="100%" height="500px"></iframe>
 
 ```
