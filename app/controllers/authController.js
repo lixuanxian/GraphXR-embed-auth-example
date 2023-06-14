@@ -26,25 +26,12 @@ module.exports = {
   },
 
   logout: function (req, res) {
-    let handleLogout = function handleLogout() {
-      req.session.destroy(function (err) {
+    req.session.destroy(function (err) {
+      if (appConfig.oauth2.logoutURL && req.user) {
+        res.redirect(`${appConfig.oauth2.logoutURL}?client_id=${appConfig.oauth2.clientID}&redirect_uri=${req.protocol}://${req.get('host')}`);
+      } else {
         res.redirect("/");
-      });
-    };
-    if (appConfig.oauth2.logoutURL && req.user) {
-      axios.get(appConfig.oauth2.logoutURL, {
-          headers: {
-            Authorization: `Bearer ${req.user.oAuthToken}`,
-          },
-        })
-        .then(() => {
-          handleLogout();
-        })
-        .catch((err) => {
-          handleLogout();
-        });
-    } else {
-      handleLogout();
-    }
+      }
+    });
   },
 };

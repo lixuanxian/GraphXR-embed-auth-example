@@ -3,8 +3,8 @@ let env = process.env.NODE_ENV || "development";
 let appConfig = require("../config/config.json")[env];
 
 const Auth = function (app, passport) {
-  app.get(["/signup",'/login'], authController.signup);
-  app.get("/signin", authController.signin);
+  app.get(["/signup"], authController.signup);
+  app.get(["/signin",'/login'], authController.signin);
   app.post(
     "/signup",
     passport.authenticate("local-signup", {
@@ -24,6 +24,7 @@ const Auth = function (app, passport) {
   function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) return next();
     res.redirect("/signin");
+    // res.redirect("/oauth2/login");
   }
 
   if (appConfig.oauth2) {
